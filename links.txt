@@ -1,0 +1,14 @@
+1. pH/CO2 biphase system -> TO BE DOWNLOADED @ SAPIENZA
+	https://pubs.rsc.org/en/content/articlelanding/2007/gc/b613345b/unauth#!divAbstract
+2. pH & supercritical CO2
+	https://pubs.acs.org/doi/pdf/10.1021/ac00118a002#
+3. precipitations by pH & CO2
+	https://www.sciencedirect.com/science/article/pii/S0045653508012496
+4. CO2 perturbation effect on pH
+	https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2004JC002618
+5. Quantifying rate enhancements for acid catalysis in CO2‐enriched high‐temperature water 
+	https://aiche.onlinelibrary.wiley.com/doi/abs/10.1002/aic.11392
+6. Producing ‘pH switches’ in biphasic water–CO2 systems
+	https://www.sciencedirect.com/science/article/pii/S0896844602002310
+7. Supercritical Carbon Dioxide‐Induced Phase Changes in (Ionic Liquid, Water and Ethanol Mixture) Solutions: Application to Biphasic Catalysis.
+	https://onlinelibrary.wiley.com/doi/abs/10.1002/cphc.200300663
