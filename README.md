@@ -1,1 +1,17 @@
-# DCS
+# Digital Control System Project
+
+## Introduction
+
+This project will be focused on one among the below topic:
+
+1. **pH** regulation via **CO~2~** injection.
+***
+## Definition
+
+## Goal
+
+## Code
+
+## Results
+
+[TOC]
