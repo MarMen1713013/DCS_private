@@ -4,7 +4,7 @@
 
 This project will be focused on one among the below topic:
 
-1. **pH** regulation via **CO~2~** injection.
+1. **pH** regulation via **CO<sub>2</sub>** injection.
 ***
 ## Definition
 
