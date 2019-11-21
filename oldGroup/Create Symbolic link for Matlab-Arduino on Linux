@@ -1,0 +1,8 @@
+1) plug Arduino Due using the programming port;
+2) open Arduino IDE, tools-->Board-->Arduino Due(Programming Port), tools-->Board-->Port-->/dev/ttyACM0 (Arduino Due(Programming Port))
+3) Create the Symbolic link: open terminal and write "ln -s /dev/ttyACM0 /dev/ttyS101", where /dev/ttyACM0 is the the path to the original file/folder and /dev/ttyS101 is the path to the intended link.
+4) Open Matlab and in the Command Window write arduino('/dev/ttyS101', 'Due') to verify that everything works.
+
+
+
+Source: http://clubmate.fi/symbolic-links-and-hard-links-creating-updating-deleting-and-all-that/
