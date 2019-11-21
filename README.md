@@ -1,11 +1,7 @@
-# Digital Control System Project
+# Estimate of an *unknown* torque and *constant reference* tracking 
 
 ## Introduction
 
-This project will be focused on one among the below topic:
-
-1. **pH** regulation via **CO<sub>2</sub>** injection.
-***
 ## Definition
 
 ## Goal
