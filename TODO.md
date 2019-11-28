@@ -10,4 +10,4 @@
 1. - [ ] Motor
 2. - [ ] DC/DC converter
 - [ ] Shield
-- [ ] How to use the potentiometer
+- [ ] How to use the potentiometer on loading motor
