@@ -1,13 +1,14 @@
 # TODO
 
-- [ ] Dynamics of the __*sensing resistance*__ on the DC/DC converter
-- [ ] What is it sensing?
+- [x] Dynamics of the __*sensing pin*__ on the DC/DC converter $\rightarrow$ $+/- 10 mA$ 
+1. - [x] Trans-impedance gain of the amplifier: $TZ = 250 \Omega \simeq 200 \Omega$
+- [x] What is it sensing? $\rightarrow$ current proportional to the one on the motor ( $I = KI_c,\text{ } K=7017$ )
 > needed to optimize the *GAIN* of the amplifier
 
-- [ ] Block scheme
+- [x] Block scheme
 - [ ] Observers
 - [ ] Supports
-1. - [ ] Motor
+1. - [x] Motor
 2. - [ ] DC/DC converter
-- [ ] Shield
-- [ ] How to use the potentiometer on loading motor
+- [x] Shield
+- [x] How to use the potentiometer on loading motor
