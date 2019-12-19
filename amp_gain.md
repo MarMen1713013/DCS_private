@@ -52,5 +52,16 @@ $$
 $$
 Hence: $W_{TZ} = \frac{-A_v}{1-\beta A_v} = \frac{1}{\frac{1}{-A_v}+\beta}\simeq \frac{1}{\beta} = R_f$ is our Voltage gain.
 
+### Anti Aliasing
 
-
+Since an anti-aliasing is needed on the current loop, we simply implement it as low pass filter, i.e. we add a capacitor $C_f$ in parallel to the resistance $R_f$ so as the total transfer functions $\beta$ and $W_{TZ}$ are:
+$$
+\begin{align*}
+\beta &= \frac{1}{R_f} + sC_{f}\\
+W_{tz} &\simeq \frac{1}{\beta} = \frac{R_f}{1+sC_fR_f}
+\end{align*}
+$$
+Imposing the time constant to be at $\tau = \frac{1}{1kHz} = R_fC_f$ we have $C_f$ as :
+$$
+C_f = \frac{1}{R_f*1kHz}
+$$
