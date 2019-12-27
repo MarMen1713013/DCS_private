@@ -3,7 +3,7 @@
 - [x] Dynamics of the __*sensing pin*__ on the DC/DC converter $\rightarrow$ $+/- 10 mA$ 
 1. - [x] Trans-impedance gain of the amplifier: $TZ = 250 \Omega \simeq 220 \Omega$
 2. - [x] low pass filter @ 1kHz $\rightarrow \tau = RC = \frac{1}{1kHz} \rightarrow C \simeq 4.7 \eta F$ 
-3. - [ ] if PWM frequency is high $\rightarrow$ we can push low pass frequency up to a decade before it.
+3. - [x] if PWM frequency is high $\rightarrow$ we can push low pass frequency up to a decade before it. (C.A 100kHz) $\rightarrow \tau = \frac{1}{4kHz}$ is fine, hence $C \simeq 1nF$ 
 - [x] What is it sensing? $\rightarrow$ current proportional to the one on the motor ( $I = KI_c,\text{ } K \simeq 7017$ )
 > needed to optimize the *GAIN* of the amplifier
 
@@ -20,7 +20,8 @@
 
 ## Hardware and tests
 
-1. - [ ] Try the H-bridge at max speed
-2. - [ ] Try the PWM with a certain profile
+1. - [x] Try the H-bridge at max speed
+2. - [x] Try the PWM with a certain profile
 3. - [ ] Test dynamics of $I_{cs}$ (Try if $R_f = 220 \Omega$ is right)
 4. - [ ] Test cut frequency for the low-pass filter
+
