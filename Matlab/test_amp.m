@@ -4,6 +4,7 @@ clc
 a = arduino;
 
 configurePin(a,'A0','AnalogInput'); % input pin
+
 configurePin(a,'A5','AnalogInput'); % output pin
 
 in = [];
