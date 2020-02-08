@@ -2,19 +2,19 @@ clear
 clc
 close all
 
-%User Defined Properties
-a = arduino('COM5','Due','Libraries','rotaryEncoder')
-
-configurePin(a,'D2', 'DigitalOutput')   % ENA
-configurePin(a,'D3', 'DigitalOutput')   % IN1
-configurePin(a,'D4', 'DigitalOutput')   % IN2
-configurePin(a,'D7', 'DigitalOutput')   % ENB
-writeDigitalPin(a,'D2', 0);  % choose sense of rotation motor A
-writeDigitalPin(a,'D3', 0);  % choose sense of rotation motor A
-writeDigitalPin(a,'D4', 1);  % choose sense of rotation motor B
-writeDigitalPin(a,'D7', 0);  % choose sense of rotation motor B
-
-encoder = rotaryEncoder(a,'D8','D10',11)
+% %User Defined Properties
+% a = arduino('COM5','Due','Libraries','rotaryEncoder')
+% 
+% configurePin(a,'D2', 'DigitalOutput')   % ENA
+% configurePin(a,'D3', 'DigitalOutput')   % IN1
+% configurePin(a,'D4', 'DigitalOutput')   % IN2
+% configurePin(a,'D7', 'DigitalOutput')   % ENB
+% writeDigitalPin(a,'D2', 0);  % choose sense of rotation motor A
+% writeDigitalPin(a,'D3', 0);  % choose sense of rotation motor A
+% writeDigitalPin(a,'D4', 1);  % choose sense of rotation motor B
+% writeDigitalPin(a,'D7', 0);  % choose sense of rotation motor B
+% 
+% encoder = rotaryEncoder(a,'D8','D10',11)
 
 %Define Function Variables
 e_speed = 0.0;  % error
@@ -37,12 +37,14 @@ ylabel("Angular speed [RPM]")
 grid on
 hold on
 
+pwm_save = [];
 tic
 while(1>0)
     count = count + 1;
     time(count) = toc;
     
-    rpm = readSpeed(encoder);% current angular velocity [rpm]
+    rpm = speedGenerator(pwm_pulse*72.9);
+    %rpm = readSpeed(encoder);% current angular velocity [rpm]
     v_rpm(count) = rpm;      % velocity vector [reduction ratio 40:1]
     plot(time,v_rpm,'-r');   % plot angular velocity
     
@@ -53,9 +55,24 @@ while(1>0)
     e_speed_sum = e_speed_sum+e_speed; % sum of error
     pwm_pulse = map(pwm_pulse, -1500,1500,0,3.3); % control signal remap
     %update new speed
-    if (pwm_pulse > 3.3) writePWMVoltage(a,'D2',3.3);
-    else if (pwm_pulse < 0) writePWMVoltage(a,'D2',0);
-        else writePWMVoltage(a,'D2',pwm_pulse);
+
+        
+   Kaw=1  
+   
+        if (pwm_pulse > 5) %verificare perchè loro usavano 3.3
+      
+    error = pwm_pulse - 5;
+    correction = Kaw*error;
+    pwm_pulse = pwm_pulse - correction;
+        
+       % writePWMVoltage(a,'D2', pwm_pulse); 
+        pwm_save = [pwm_save; pwm_pulse]
+    else if (pwm_pulse < 0)  
+            %writePWMVoltage(a,'D2',0);
+                pwm_save = [pwm_save; pwm_pulse]
+        else
+            %writePWMVoltage(a,'D2',pwm_pulse);
+                pwm_save = [pwm_save; pwm_pulse]
         end
     end
     
