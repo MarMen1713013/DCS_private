@@ -27,10 +27,10 @@ for count= 1:50
     rpm=readSpeed(encoder);
     f_rpm (count)= rpm;
     plot(time, f_rpm, '-')
-    
+    tau_mmech(count)= 0.63* f_rpm(count);
    
 end
-tau_mmech(count)= 0.63* f_rpm;
+
    sr_tau= sumsqr(tau_mmech);
    disp(sr_tau);
    lsa= sqrt((sr_tau)/count) ;
