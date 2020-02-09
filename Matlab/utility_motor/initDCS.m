@@ -1,4 +1,5 @@
 clear;
+disp('Initialization...')
 if(ispc)
     a = arduino('COM5','Uno','Libraries','rotaryEncoder'); % define the Arduino Communication port
 elseif(isunix)
@@ -20,4 +21,10 @@ encoder = rotaryEncoder(a,'D2','D3',11);    % create encoder object 4x
 %% Motor two
 % This is used to set up the load motor
 
-%TODO
+configurePin(a,'D5', 'DigitalOutput');   % ENA PWM Set motor speed
+configurePin(a,'D6', 'DigitalOutput');   % IN1  1------0
+configurePin(a,'D7', 'DigitalOutput');   % IN2  0------1
+counterClockWise(a,'main');
+main = 'main';
+load = 'load';
+disp('End of initialization')

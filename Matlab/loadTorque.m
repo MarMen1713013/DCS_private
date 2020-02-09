@@ -5,7 +5,7 @@ addpath '/home/marco/Scrivania/DCS/Matlab/utility_motor'
 initDCS; % initialize the arduino and the motors
 
 E = 3.3;
-go(a,E,'main'); % set speed for the main motor
+go(a,E,main); % set speed for the main motor
 
 Ke = 0.729; % constant to compute rated speed
 speed_hat = E/Ke;
@@ -16,7 +16,7 @@ J = 2e-3; %from previous examples
 t = [];
 s = [];
 %%
-for i = 1:50
+while(1) %for i = 1:50
 read_speed = readSpeed(encoder);
 speed_error = read_speed - speed_hat;
 speed_error_sum = speed_error_sum + speed_error;
@@ -28,18 +28,18 @@ speed_hat = speed_hat + (Tl_minus-T)/J;
 
 s = [s; speed_hat];
 
-% figure(1)
-% plot(t);
-% pause(0.01)
-% figure(2)
-% plot(s)
-% pause(0.01)
-end
-
 figure(1)
 plot(t);
+pause(0.01)
 figure(2)
 plot(s)
+pause(0.01)
+end
+
+% figure(1)
+% plot(t);
+% figure(2)
+% plot(s)
 
 figure(1);
 title("Load Torque");
@@ -50,4 +50,6 @@ figure(2);
 title("Observed Speed");
 xlabel("sampling interval");
 ylabel("Speed [rad/s]");
+pause;
+go(a,0,main)
 
