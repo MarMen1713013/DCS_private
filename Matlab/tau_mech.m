@@ -5,7 +5,7 @@ close all
 %Arduino connections
 a = arduino('COM1','Uno','Libraries','rotaryEncoder')
 
-encoder = rotaryEncoder(a,'D8','D10',11)
+encoder = rotaryEncoder(a,'D2','D3',180)
 
 time = 0;
 data = 0;
@@ -28,9 +28,9 @@ for count= 1:50
     f_rpm (count)= rpm;
     plot(time, f_rpm, '-')
     
-   tau_mmech(count)= 0.63* f_rpm;
+   
 end
-
+tau_mmech(count)= 0.63* f_rpm;
    sr_tau= sumsqr(tau_mmech);
    disp(sr_tau);
    lsa= sqrt((sr_tau)/count) ;
