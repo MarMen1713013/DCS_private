@@ -1,4 +1,3 @@
-clear;
 disp('Initialization...')
 if(ispc)
     a = arduino('COM5','Uno','Libraries','rotaryEncoder'); % define the Arduino Communication port
@@ -24,7 +23,7 @@ encoder = rotaryEncoder(a,'D2','D3',11);    % create encoder object 4x
 configurePin(a,'D5', 'DigitalOutput');   % ENA PWM Set motor speed
 configurePin(a,'D6', 'DigitalOutput');   % IN1  1------0
 configurePin(a,'D7', 'DigitalOutput');   % IN2  0------1
-counterClockWise(a,'main');
+clockWise(a,'load');
 main = 'main';
 load = 'load';
 disp('End of initialization')
