@@ -11,7 +11,7 @@ r_ratio = 40; % reduction ratio of the motor
 pwmV = 5; % pwm imposed voltage
 Va = pwm2V(pwmV); % actual armature voltage
 Ke = 0.0666; % from previous experiment
-Ra = 16; % from measurement
+Ra = 13.7; % from measurement
 B = 0;
 go(a,pwmV,main);
 pause(1);
@@ -27,7 +27,7 @@ for i = 1:sim_length
     pause(0.0001)
 end
 stopMotor(a,main)
-B_mean = sum(t)/length(t);
+B_mean = sum(t)/length(t)
 hold on;
 plot([0,sim_length],[B_mean, B_mean]);
 

@@ -12,7 +12,7 @@ r_ratio = 40; % reduction ratio of the motor
 pwmV = 5; % pwm imposed voltage
 Va = pwm2V(pwmV); % actual armature voltage
 Ke = 0.0666; % from previous experiment
-Ra = 16; % from measurement
+Ra = 13.7; % from measurement
 T_load = 0;
 go(a,pwmV,main);
 pause(1);
