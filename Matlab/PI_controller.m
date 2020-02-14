@@ -48,7 +48,7 @@ for l=(1:1:500)
     
     
     %plot error speed
-    subplot(2,2,2)
+    subplot(2,2,[2,4])
     plot(time,v_e_speed,'-r')
     title('Error speed')
     
@@ -57,11 +57,11 @@ for l=(1:1:500)
     e_speed_pre = e_speed; % save last (previous) error
     e_speed_sum = e_speed_sum+e_speed; % sum of error
     
-    %plot of the integral of the error
-    v_e_speed_sum(count) = e_speed_sum;
-    subplot(2,2,4)
-    plot(time,v_e_speed_sum,'-r')
-    
+%     plot of the integral of the error
+%     v_e_speed_sum(count) = e_speed_sum;
+%     subplot(2,2,4)
+%     plot(time,v_e_speed_sum,'-r')
+%     
     % control signal remap
     pwm_pulse = map(pwm_pulse, -1500,1500,0,5); 
    
