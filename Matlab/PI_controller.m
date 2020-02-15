@@ -68,7 +68,7 @@ for l=(1:1:500)
 
         
     %update new spedd
-    Kaw=1 %costant for the antiwindup regulation  
+    Kaw=1; %costant for the antiwindup regulation  
    
         if (pwm_pulse > 5) 
     
