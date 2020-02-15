@@ -1,8 +1,8 @@
 clear
 clc
 close all
-%% simulation
-% %Arduino connections
+
+% Arduino connections
 % a = arduino('COM5','Uno','Libraries','rotaryEncoder')
 % 
 % encoder = rotaryEncoder(a,'D2','D3',180)
@@ -37,27 +37,35 @@ grid on
 tic
 for i= 1:50
     if(i==2)
-        go(a,5,main);
+        go(a,5,main); %start motor after the count is 2
     end
     time(i) = toc;
     rpm=abs(readSpeed(encoder));
     f_rpm(i)= rpm;
-    plot(time, f_rpm, '-')
+    plot(time, f_rpm, '-') 
    
 end
 stopMotor(a,main);
 
-   maxx=0.9*f_rpm(i);
+%calculating upper and lower limit for every iteration
+
+   maxx=0.9*f_rpm(i); 
    minn=0.1*f_rpm(i);
-   
+%calculating the least and maximum value from the whole observation
+
    tr1=find(abs(f_rpm-maxx)== min(abs(f_rpm-maxx)));
    tr2=find(abs(f_rpm-minn)== min(abs(f_rpm-minn)));
+%calculating the rise time for the whole experiment
+
    tr=time(tr1)-time(tr2);
    disp (tr);
-   
+ %deriving the torque of motor from the rise time
+ 
    tau_mmech= 0.63*tr;
    disp(tau_mmech);
    
+ %calculating the value of inertia of the motor
+ 
    J=(Kt*Ke*tau_mmech)/Ra ;
    disp(J);
 
