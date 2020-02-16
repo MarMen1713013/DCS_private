@@ -16,6 +16,7 @@ configurePin(a,'D12', 'DigitalOutput');   % IN1  1------0
 configurePin(a,'D13', 'DigitalOutput');   % IN2  0------1
 clockWise(a,'main');
 encoder = rotaryEncoder(a,'D2','D3',11);    % create encoder object 4x
+resetCount(encoder);
 T_sample = 20e-3;
 disp(' Main motor pins: done')
 %% Motor two
