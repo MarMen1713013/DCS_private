@@ -17,9 +17,9 @@ data = 0;
 i= 0;
 rpm = 0;
 f_rpm = 0;
-Kt = 0.729;
-Ke = 0.729;
-Ra= 13.7;
+Kt = 0.729;%N.m/A
+Ke = 0.729; %V.s/rad
+Ra= 13.7; %ohms
 tr1=0;
 tr2=0;
 tr=0;
@@ -48,24 +48,22 @@ end
 stopMotor(a,main);
 
 %calculating upper and lower limit for every iteration
-
    maxx=0.9*f_rpm(i); 
    minn=0.1*f_rpm(i);
+   
 %calculating the least and maximum value from the whole observation
-
    tr1=find(abs(f_rpm-maxx)== min(abs(f_rpm-maxx)));
    tr2=find(abs(f_rpm-minn)== min(abs(f_rpm-minn)));
+   
 %calculating the rise time for the whole experiment
-
-   tr=time(tr1)-time(tr2);
+   tr=time(tr1)-time(tr2);    
    disp (tr);
- %deriving the torque of motor from the rise time
- 
-   tau_mmech= 0.63*tr;
+   
+ %deriving the time constant of motor
+   tau_mmech= 0.63*tr;   %seconds
    disp(tau_mmech);
    
  %calculating the value of inertia of the motor
- 
-   J=(Kt*Ke*tau_mmech)/Ra ;
+   J=(Kt*Ke*tau_mmech)/Ra ;    %kg.m^2
    disp(J);
 
