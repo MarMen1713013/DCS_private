@@ -4,7 +4,7 @@ clc;
 addpath '/home/marco/Scrivania/DCS/Matlab/utility_motor'
 addpath '/home/marco/Scrivania/DCS/Matlab/datas'
 initDCS; % initialize the arduino and the motors
-sim_length = 1000; % number of samples of the simulation
+sim_length = 500; % number of samples of the simulation
 
 r_ratio = 40; % reduction ratio of the motor
 
@@ -30,5 +30,9 @@ stopMotor(a,main)
 B_mean = sum(t)/length(t)
 hold on;
 plot([0,sim_length],[B_mean, B_mean]);
+xlabel('Samples');
+ylabel('Fiction coefficient [N*s]');
+title('Viscous friction estimation');
+grid on;
 
 save('datas/B.mat','B_mean');

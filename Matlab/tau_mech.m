@@ -19,7 +19,7 @@ rpm = 0;
 f_rpm = 0;
 Kt = 0.729;%N.m/A
 Ke = 0.729; %V.s/rad
-Ra= 13.7; %ohms
+Ra= 1.12; %ohms
 tr1=0;
 tr2=0;
 tr=0;
@@ -56,14 +56,14 @@ stopMotor(a,main);
    tr2=find(abs(f_rpm-minn)== min(abs(f_rpm-minn)));
    
 %calculating the rise time for the whole experiment
-   tr=time(tr1)-time(tr2);    
-   disp (tr);
+   tr=time(tr1(1))-time(tr2(end));
+   disp(['Rise Time: ',num2str(tr)]);
    
  %deriving the time constant of motor
    tau_mmech= 0.63*tr;   %seconds
-   disp(tau_mmech);
+   disp(['Time Constant: ',num2str(tau_mmech)]);
    
  %calculating the value of inertia of the motor
    J=(Kt*Ke*tau_mmech)/Ra ;    %kg.m^2
-   disp(J);
+   disp(['Inertia: ',num2str(J)]);
 

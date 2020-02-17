@@ -5,7 +5,7 @@ addpath '/home/marco/Scrivania/DCS/Matlab/utility_motor'
 addpath '/home/marco/Scrivania/DCS/Matlab/datas'
 load 'datas/B.mat'
 initDCS; % initialize the arduino and the motors
-sim_length = 1000; % number of samples of the simulation
+sim_length = 500; % number of samples of the simulation
 
 r_ratio = 40; % reduction ratio of the motor
 
@@ -31,3 +31,7 @@ stopMotor(a,main)
 hold on;
 ssTl_mean = sum(t)/length(t)
 plot([0,sim_length],[ssTl_mean,ssTl_mean])
+xlabel('Samples');
+ylabel('Torque [N*m]');
+title('Load Torque');
+grid on;

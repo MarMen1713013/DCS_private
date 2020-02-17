@@ -1,7 +1,7 @@
 clear
 clc
 close all
-
+figure();
 % %User Defined Properties
 addpath './utility_motor'
 initDCS
@@ -14,22 +14,17 @@ pwm_pulse = 0.0;
 kp = 0.23;        % with set_speed = 1000, these gains are chosen Kp=0.23 ki = 0.09
 ki = 0.17;        % with range [-1500, 1500]
 set_speed = 3000;   % max speed is 5500 rpm with pwm = 255
-time = 0;
+sim_length = 500;
+sim_time = 30;
+time = zeros(sim_length);
 data = 0;
-count = 0;
+count = 1;
 rpm = 0;
 v_rpm = 0;
 
-figure();
-title("PI controller, set-point = 3000");
-xlabel("Time [s]");
-ylabel("Angular speed [RPM]")
-grid on
-hold on
-
 pwm_save = [];
 tic
-for l=(1:1:500)
+while(time(count) <= sim_time && count < sim_length)
     count = count + 1;
     time(count) = toc;
     
@@ -39,7 +34,7 @@ for l=(1:1:500)
     
     % plot angular velocity
     subplot(2,2,1)
-    plot(time,v_rpm,'-r');   % plot angular velocity
+    plot(time(1:count),v_rpm,'-r');   % plot angular velocity
     title('Motor Angular Velocity');
     
     %---------------PI CONTROLLER-------------
@@ -49,7 +44,7 @@ for l=(1:1:500)
     
     %plot error speed
     subplot(2,2,[2,4])
-    plot(time,v_e_speed,'-r')
+    plot(time(1:count),v_e_speed,'-r')
     title('Error speed')
     
     
@@ -91,13 +86,21 @@ for l=(1:1:500)
     %plot of the control effort
     v_pwm_pulse(count) = pwm_pulse;
     subplot(2,2,3)
-    plot(time, v_pwm_pulse, '-r')
+    plot(time(1:count), v_pwm_pulse, '-r')
     title('Control effort');
         
     %Update the graph
     pause(.01);
 end
 writePWMVoltage(a,'D11',0);
+figs = {1,3,[2,4]};
+ylabels = {'Angular speed [rpm]','Control effort [pwm_V]','Speed error [rpm]'};
+for i = 1:3
+    subplot(2,2,figs{i});
+    xlabel("Time [s]");
+    ylabel(ylabels{i});
+    grid on
+end
 
 % make the control signal compatible with arduino [0V to 3.3V]
 function y = map(x,in_min, in_max, out_min, out_max)
