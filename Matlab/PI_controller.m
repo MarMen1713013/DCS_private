@@ -5,6 +5,10 @@ figure();
 % %User Defined Properties
 addpath './utility_motor'
 initDCS
+%% simulation parameters
+set_speed = 3000;   % max speed is 5500 rpm with pwm = 255
+sim_length = 1000;
+sim_time = 60;
 
 %Define Function Variables
 e_speed = 0.0;  % error
@@ -13,9 +17,6 @@ e_speed_sum = 0.0;
 pwm_pulse = 0.0;
 kp = 0.23;        % with set_speed = 1000, these gains are chosen Kp=0.23 ki = 0.09
 ki = 0.17;        % with range [-1500, 1500]
-set_speed = 3000;   % max speed is 5500 rpm with pwm = 255
-sim_length = 500;
-sim_time = 30;
 time = zeros(sim_length);
 data = 0;
 count = 1;
@@ -36,6 +37,9 @@ while(time(count) <= sim_time && count < sim_length)
     subplot(2,2,1)
     plot(time(1:count),v_rpm,'-r');   % plot angular velocity
     title('Motor Angular Velocity');
+    hold on;
+    plot([time(1),time(count)],[set_speed,set_speed],'g');
+    hold off;
     
     %---------------PI CONTROLLER-------------
     e_speed = set_speed - rpm;  % error computation
